@@ -6,7 +6,9 @@ str_trim <- function(x) {
 }
 
 str_split_fixed <- function(string, pattern, n) {
-  if (length(string) == 0) return(matrix(character(), nrow = 1, ncol = n))
+  if (length(string) == 0) {
+    return(matrix(character(), nrow = 1, ncol = n))
+  }
   m <- gregexpr(pattern, string)[[1]]
   if (length(m) == 1 && m == -1) {
     res <- string
@@ -15,8 +17,11 @@ str_split_fixed <- function(string, pattern, n) {
     m_ends <- m + attr(m, "match.length") - 1L
     starts <- c(1, m_ends + 1L)[seq_len(n)]
     ends <- c((m_starts - 1L)[seq_len(n - 1)], nchar(string))
-    res <- lapply(string, function(x)
-      unlist(Map(substr, x, starts, ends, USE.NAMES = FALSE))
+    res <- lapply(
+      string,
+      function(x) {
+        unlist(Map(substr, x, starts, ends, USE.NAMES = FALSE))
+      }
     )
   }
 
@@ -43,7 +48,8 @@ str_match <- function(string, pattern) {
   cbind(
     substr(string, m, attr(m, "match.length") + m - 1L),
     substr(
-      string, attr(m, "capture.start"),
+      string,
+      attr(m, "capture.start"),
       attr(m, "capture.length") + attr(m, "capture.start") - 1L
     )
   )

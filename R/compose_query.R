@@ -1,4 +1,4 @@
-compose_query <- function (elements) {
+compose_query <- function(elements) {
   if (length(elements) == 0) {
     return("")
   }
@@ -14,12 +14,15 @@ compose_query <- function (elements) {
   names <- curl::curl_escape(names(elements))
 
   encode <- function(x) {
-    if (inherits(x, "AsIs"))
+    if (inherits(x, "AsIs")) {
       return(x)
+    }
     curl::curl_escape(x)
   }
 
   values <- vapply(elements, encode, character(1))
 
-  paste0(names, "=", values, collapse = "&")
+  ret <- paste0(names, "=", values, collapse = "&")
+
+  return(ret)
 }

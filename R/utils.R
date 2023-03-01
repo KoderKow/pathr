@@ -9,8 +9,9 @@ timestamp <- function(x = Sys.time()) {
 sort_names <- function(x) x[order(names(x))]
 
 nonce <- function(length = 10) {
-  paste(sample(c(letters, LETTERS, 0:9), length, replace = TRUE),
-        collapse = ""
+  paste(
+    sample(c(letters, LETTERS, 0:9), length, replace = TRUE),
+    collapse = ""
   )
 }
 
@@ -38,13 +39,17 @@ is_installed <- function(pkg) {
 }
 
 need_package <- function(pkg) {
-  if (is_installed(pkg)) return(invisible())
+  if (is_installed(pkg)) {
+    return(invisible())
+  }
 
   stop("Please install ", pkg, " package", call. = FALSE)
 }
 
 last <- function(x) {
-  if (length(x) < 1) return(x)
+  if (length(x) < 1) {
+    return(x)
+  }
   x[[length(x)]]
 }
 
@@ -61,7 +66,9 @@ keep_last <- function(...) {
 }
 
 named_vector <- function(title, x) {
-  if (length(x) == 0) return()
+  if (length(x) == 0) {
+    return()
+  }
 
   cat(title, ":\n", sep = "")
   bullets <- paste0("* ", names(x), ": ", as.character(x))

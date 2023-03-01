@@ -2,7 +2,7 @@ parse_query <- function(query) {
   params <- vapply(
     X = strsplit(query, "&")[[1]],
     FUN = str_split_fixed,
-    patter = "=",
+    pattern = "=",
     n = 2,
     FUN.VALUE = character(2)
   )

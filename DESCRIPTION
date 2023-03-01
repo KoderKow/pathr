@@ -1,9 +1,9 @@
 Package: pathr
-Title: What the Package Does (One Line, Title Case)
+Title: Work with URL and file paths
 Version: 0.0.0.9000
 Authors@R: 
     person("Kyle", "Harris", , "koderkow@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: The goal of pathr is to simplify the process of string manipulations for URLs and file paths. This uses modified functions from the {httr} to create opinionated functions that allow working with URLs and paths easier.
 License: MIT + file LICENSE
 URL: https://github.com/KoderKow/pathr, https://koderkow.github.io/pathr/
 BugReports: https://github.com/KoderKow/pathr/issues
