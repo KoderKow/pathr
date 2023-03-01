@@ -4,9 +4,9 @@
 \name{pathr-package}
 \alias{pathr}
 \alias{pathr-package}
-\title{pathr: What the Package Does (One Line, Title Case)}
+\title{pathr: Work with URL and file paths}
 \description{
-What the package does (one paragraph).
+The goal of pathr is to simplify the process of string manipulations for URLs and file paths. This uses modified functions from the {httr} to create opinionated functions that allow working with URLs and paths easier.
 }
 \seealso{
 Useful links:
