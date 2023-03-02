@@ -104,20 +104,26 @@ into a string.</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">parse_url</span><span class="op">(</span><span class="st">"http://google.com/"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Url: http://google.com/</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - url: http://google.com/</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - scheme: http</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - hostname: google.com</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - host_info_name: google</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - host_info_extension: com</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - path: </span>
 <span class="r-in"><span><span class="fu">parse_url</span><span class="op">(</span><span class="st">"http://google.com:80/"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Url: http://google.com:80/</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - url: http://google.com:80/</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - scheme: http</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - hostname: google.com</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - host_info_name: google</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - host_info_extension: com</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - port: 80</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - path: </span>
 <span class="r-in"><span><span class="fu">parse_url</span><span class="op">(</span><span class="st">"http://google.com:80/?a=1&amp;b=2"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Url: http://google.com:80/?a=1&amp;b=2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - url: http://google.com:80/?a=1&amp;b=2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - scheme: http</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - hostname: google.com</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - host_info_name: google</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - host_info_extension: com</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - port: 80</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - path: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - query_a: 1</span>

@@ -24,7 +24,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Work with URL and file paths">
-<meta property="og:description" content="The goal of pathr is to simplify the process of string manipulations for URLs and file paths. This uses modified functions from the {httr} to create opinionated functions that allow working with URLs and paths easier.">
+<meta property="og:description" content="The goal of pathr is to simplify the process of string
+    manipulations for URLs and file paths. This uses modified functions
+    from the {httr} to create opinionated functions that allow working
+    with URLs and paths easier.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -94,11 +97,11 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The goal of pathr is to simplify the process of string manipulations for URLs and file paths. This uses modified functions from the <a href="https://github.com/r-lib/httr" class="external-link">{httr}</a> to create opinionated functions that allow working with URLs and paths easier.</p>
+<p>The goal of {pathr} is to simplify the process of string manipulations for URLs and file paths. This uses modified functions from the <a href="https://github.com/r-lib/httr" class="external-link">{httr}</a> to create opinionated functions that allow working with URLs and paths easier.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of pathr like so:</p>
+<p>You can install the development version of {pathr} like so:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"koderkow/pathr"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -117,27 +120,31 @@
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/parse_url.html">parse_url</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; Url: https://github.com/KoderKow/pathr</span></span>
+<span><span class="co">#&gt; - url: https://github.com/KoderKow/pathr</span></span>
 <span><span class="co">#&gt; - scheme: https</span></span>
 <span><span class="co">#&gt; - hostname: github.com</span></span>
+<span><span class="co">#&gt; - host_info_name: github</span></span>
+<span><span class="co">#&gt; - host_info_extension: com</span></span>
 <span><span class="co">#&gt; - path: KoderKow/pathr</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; List of 10</span></span>
-<span><span class="co">#&gt;  $ scheme  : chr "https"</span></span>
-<span><span class="co">#&gt;  $ hostname: chr "github.com"</span></span>
-<span><span class="co">#&gt;  $ port    : NULL</span></span>
-<span><span class="co">#&gt;  $ path    : chr "KoderKow/pathr"</span></span>
-<span><span class="co">#&gt;  $ file    :List of 3</span></span>
-<span><span class="co">#&gt;   ..$ dir : NULL</span></span>
-<span><span class="co">#&gt;   ..$ file: NULL</span></span>
-<span><span class="co">#&gt;   ..$ ext : NULL</span></span>
-<span><span class="co">#&gt;  $ query   : NULL</span></span>
-<span><span class="co">#&gt;  $ params  : NULL</span></span>
-<span><span class="co">#&gt;  $ fragment: NULL</span></span>
-<span><span class="co">#&gt;  $ username: NULL</span></span>
-<span><span class="co">#&gt;  $ password: NULL</span></span>
-<span><span class="co">#&gt;  - attr(*, "class")= chr [1:2] "pathr" "character"</span></span></code></pre></div>
+<span><span class="co">#&gt; List of 15</span></span>
+<span><span class="co">#&gt;  $ url                : chr "https://github.com/KoderKow/pathr"</span></span>
+<span><span class="co">#&gt;  $ scheme             : chr "https"</span></span>
+<span><span class="co">#&gt;  $ hostname           : chr "github.com"</span></span>
+<span><span class="co">#&gt;  $ host_info_name     : chr "github"</span></span>
+<span><span class="co">#&gt;  $ host_info_extension: chr "com"</span></span>
+<span><span class="co">#&gt;  $ port               : NULL</span></span>
+<span><span class="co">#&gt;  $ path               : chr "KoderKow/pathr"</span></span>
+<span><span class="co">#&gt;  $ file_dir           : NULL</span></span>
+<span><span class="co">#&gt;  $ file_name          : NULL</span></span>
+<span><span class="co">#&gt;  $ file_ext           : NULL</span></span>
+<span><span class="co">#&gt;  $ query              : NULL</span></span>
+<span><span class="co">#&gt;  $ params             : NULL</span></span>
+<span><span class="co">#&gt;  $ fragment           : NULL</span></span>
+<span><span class="co">#&gt;  $ username           : NULL</span></span>
+<span><span class="co">#&gt;  $ password           : NULL</span></span>
+<span><span class="co">#&gt;  - attr(*, "class")= chr [1:2] "list" "pathr"</span></span></code></pre></div>
 <p>Put it back to together</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/parse_url.html">build_url</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
@@ -153,34 +160,152 @@
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/parse_url.html">parse_url</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; Url: https://github.com/KoderKow/pathr/example-folder/my-data.csv</span></span>
+<span><span class="co">#&gt; - url: https://github.com/KoderKow/pathr/example-folder/my-data.csv</span></span>
 <span><span class="co">#&gt; - scheme: https</span></span>
 <span><span class="co">#&gt; - hostname: github.com</span></span>
+<span><span class="co">#&gt; - host_info_name: github</span></span>
+<span><span class="co">#&gt; - host_info_extension: com</span></span>
 <span><span class="co">#&gt; - path: KoderKow/pathr/example-folder/my-data.csv</span></span>
 <span><span class="co">#&gt; - file_dir: KoderKow/pathr/example-folder</span></span>
-<span><span class="co">#&gt; - file_file: my-data</span></span>
+<span><span class="co">#&gt; - file_name: my-data</span></span>
 <span><span class="co">#&gt; - file_ext: csv</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; List of 10</span></span>
-<span><span class="co">#&gt;  $ scheme  : chr "https"</span></span>
-<span><span class="co">#&gt;  $ hostname: chr "github.com"</span></span>
-<span><span class="co">#&gt;  $ port    : NULL</span></span>
-<span><span class="co">#&gt;  $ path    : chr "KoderKow/pathr/example-folder/my-data.csv"</span></span>
-<span><span class="co">#&gt;  $ file    :List of 3</span></span>
-<span><span class="co">#&gt;   ..$ dir : chr "KoderKow/pathr/example-folder"</span></span>
-<span><span class="co">#&gt;   ..$ file: chr "my-data"</span></span>
-<span><span class="co">#&gt;   ..$ ext : chr "csv"</span></span>
-<span><span class="co">#&gt;  $ query   : NULL</span></span>
-<span><span class="co">#&gt;  $ params  : NULL</span></span>
-<span><span class="co">#&gt;  $ fragment: NULL</span></span>
-<span><span class="co">#&gt;  $ username: NULL</span></span>
-<span><span class="co">#&gt;  $ password: NULL</span></span>
-<span><span class="co">#&gt;  - attr(*, "class")= chr [1:2] "pathr" "character"</span></span></code></pre></div>
+<span><span class="co">#&gt; List of 15</span></span>
+<span><span class="co">#&gt;  $ url                : chr "https://github.com/KoderKow/pathr/example-folder/my-data.csv"</span></span>
+<span><span class="co">#&gt;  $ scheme             : chr "https"</span></span>
+<span><span class="co">#&gt;  $ hostname           : chr "github.com"</span></span>
+<span><span class="co">#&gt;  $ host_info_name     : chr "github"</span></span>
+<span><span class="co">#&gt;  $ host_info_extension: chr "com"</span></span>
+<span><span class="co">#&gt;  $ port               : NULL</span></span>
+<span><span class="co">#&gt;  $ path               : chr "KoderKow/pathr/example-folder/my-data.csv"</span></span>
+<span><span class="co">#&gt;  $ file_dir           : chr "KoderKow/pathr/example-folder"</span></span>
+<span><span class="co">#&gt;  $ file_name          : chr "my-data"</span></span>
+<span><span class="co">#&gt;  $ file_ext           : chr "csv"</span></span>
+<span><span class="co">#&gt;  $ query              : NULL</span></span>
+<span><span class="co">#&gt;  $ params             : NULL</span></span>
+<span><span class="co">#&gt;  $ fragment           : NULL</span></span>
+<span><span class="co">#&gt;  $ username           : NULL</span></span>
+<span><span class="co">#&gt;  $ password           : NULL</span></span>
+<span><span class="co">#&gt;  - attr(*, "class")= chr [1:2] "list" "pathr"</span></span></code></pre></div>
 <p>Building the URL ignores the file element</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/parse_url.html">build_url</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "https://github.com/KoderKow/pathr/example-folder/my-data.csv"</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="vector-of-urls">Vector of URLS<a class="anchor" aria-label="anchor" href="#vector-of-urls"></a>
+</h3>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"https://github.com/KoderKow/pathr1"</span>,</span>
+<span>  <span class="st">"https://github.com/KoderKow/pathr2"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/parse_url.html">parse_url</a></span><span class="op">(</span><span class="va">urls</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; - url: https://github.com/KoderKow/pathr1</span></span>
+<span><span class="co">#&gt; - scheme: https</span></span>
+<span><span class="co">#&gt; - hostname: github.com</span></span>
+<span><span class="co">#&gt; - host_info_name: github</span></span>
+<span><span class="co">#&gt; - host_info_extension: com</span></span>
+<span><span class="co">#&gt; - path: KoderKow/pathr1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]</span></span>
+<span><span class="co">#&gt; - url: https://github.com/KoderKow/pathr2</span></span>
+<span><span class="co">#&gt; - scheme: https</span></span>
+<span><span class="co">#&gt; - hostname: github.com</span></span>
+<span><span class="co">#&gt; - host_info_name: github</span></span>
+<span><span class="co">#&gt; - host_info_extension: com</span></span>
+<span><span class="co">#&gt; - path: KoderKow/pathr2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; List of 2</span></span>
+<span><span class="co">#&gt;  $ :List of 15</span></span>
+<span><span class="co">#&gt;   ..$ url                : chr "https://github.com/KoderKow/pathr1"</span></span>
+<span><span class="co">#&gt;   ..$ scheme             : chr "https"</span></span>
+<span><span class="co">#&gt;   ..$ hostname           : chr "github.com"</span></span>
+<span><span class="co">#&gt;   ..$ host_info_name     : chr "github"</span></span>
+<span><span class="co">#&gt;   ..$ host_info_extension: chr "com"</span></span>
+<span><span class="co">#&gt;   ..$ port               : NULL</span></span>
+<span><span class="co">#&gt;   ..$ path               : chr "KoderKow/pathr1"</span></span>
+<span><span class="co">#&gt;   ..$ file_dir           : NULL</span></span>
+<span><span class="co">#&gt;   ..$ file_name          : NULL</span></span>
+<span><span class="co">#&gt;   ..$ file_ext           : NULL</span></span>
+<span><span class="co">#&gt;   ..$ query              : NULL</span></span>
+<span><span class="co">#&gt;   ..$ params             : NULL</span></span>
+<span><span class="co">#&gt;   ..$ fragment           : NULL</span></span>
+<span><span class="co">#&gt;   ..$ username           : NULL</span></span>
+<span><span class="co">#&gt;   ..$ password           : NULL</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "list" "pathr"</span></span>
+<span><span class="co">#&gt;  $ :List of 15</span></span>
+<span><span class="co">#&gt;   ..$ url                : chr "https://github.com/KoderKow/pathr2"</span></span>
+<span><span class="co">#&gt;   ..$ scheme             : chr "https"</span></span>
+<span><span class="co">#&gt;   ..$ hostname           : chr "github.com"</span></span>
+<span><span class="co">#&gt;   ..$ host_info_name     : chr "github"</span></span>
+<span><span class="co">#&gt;   ..$ host_info_extension: chr "com"</span></span>
+<span><span class="co">#&gt;   ..$ port               : NULL</span></span>
+<span><span class="co">#&gt;   ..$ path               : chr "KoderKow/pathr2"</span></span>
+<span><span class="co">#&gt;   ..$ file_dir           : NULL</span></span>
+<span><span class="co">#&gt;   ..$ file_name          : NULL</span></span>
+<span><span class="co">#&gt;   ..$ file_ext           : NULL</span></span>
+<span><span class="co">#&gt;   ..$ query              : NULL</span></span>
+<span><span class="co">#&gt;   ..$ params             : NULL</span></span>
+<span><span class="co">#&gt;   ..$ fragment           : NULL</span></span>
+<span><span class="co">#&gt;   ..$ username           : NULL</span></span>
+<span><span class="co">#&gt;   ..$ password           : NULL</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "list" "pathr"</span></span></code></pre></div>
+<div class="section level4">
+<h4 id="working-with-a-pathr-object">Working with a <em>pathr</em> object<a class="anchor" aria-label="anchor" href="#working-with-a-pathr-object"></a>
+</h4>
+<p>Below are three common methods for turning a lists of lists into a data frame. The base R method is built into the {pathr} package due to it needing no dependencies. The other methods, data.table and dplyr, go over the process for those work flows.</p>
+</div>
+<div class="section level4">
+<h4 id="base-r">Base R<a class="anchor" aria-label="anchor" href="#base-r"></a>
+</h4>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/pathr_to_df.html">pathr_to_df</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                                  url scheme   hostname host_info_name</span></span>
+<span><span class="co">#&gt; 1 https://github.com/KoderKow/pathr1  https github.com         github</span></span>
+<span><span class="co">#&gt; 2 https://github.com/KoderKow/pathr2  https github.com         github</span></span>
+<span><span class="co">#&gt;   host_info_extension port            path file_dir file_name file_ext query</span></span>
+<span><span class="co">#&gt; 1                 com   NA KoderKow/pathr1       NA        NA       NA    NA</span></span>
+<span><span class="co">#&gt; 2                 com   NA KoderKow/pathr2       NA        NA       NA    NA</span></span>
+<span><span class="co">#&gt;   params fragment username password</span></span>
+<span><span class="co">#&gt; 1     NA       NA       NA       NA</span></span>
+<span><span class="co">#&gt; 2     NA       NA       NA       NA</span></span></code></pre></div>
+<div class="section level5">
+<h5 id="datatable">data.table<a class="anchor" aria-label="anchor" href="#datatable"></a>
+</h5>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu">rbindlist</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#&gt; Warning message:</span></span>
+<span><span class="co">#&gt; In data.table::rbindlist(x) :</span></span>
+<span><span class="co">#&gt;   Column 6 ['port'] of item 1 is length 0. This (and 17 others like it) has been filled with NA (NULL for list columns) to make each item uniform.</span></span></code></pre></div>
+</div>
+<div class="section level5">
+<h5 id="dplyr">dplyr<a class="anchor" aria-label="anchor" href="#dplyr"></a>
+</h5>
+<p>The <em>pathr</em> class does not play nicely with <code>dplyr::bind_rows</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">x</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="co">#&gt; Error in `dplyr::bind_rows()`:</span></span>
+<span><span class="co">#&gt; ! Argument 1 must be a data frame or a named atomic vector.</span></span>
+<span><span class="co">#&gt; Run `rlang::last_error()` to see where the error occurred.</span></span></code></pre></div>
+<p>The function <code><a href="reference/remove_pathr.html">remove_pathr()</a></code> will unclass any <em>pathr</em> object or a list containing nothing but <em>pathr</em> objects. This makes it easy to move the object into Rs default class, list.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">x</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="reference/remove_pathr.html">remove_pathr</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section level2">

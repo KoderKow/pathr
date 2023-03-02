@@ -25,12 +25,27 @@
     <loc>https://koderkow.github.io/aocr/index.html</loc>
   </url>
   <url>
+    <loc>https://koderkow.github.io/aocr/reference/assert_url.html</loc>
+  </url>
+  <url>
     <loc>https://koderkow.github.io/aocr/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://koderkow.github.io/aocr/reference/is_url.html</loc>
   </url>
   <url>
     <loc>https://koderkow.github.io/aocr/reference/parse_url.html</loc>
   </url>
   <url>
     <loc>https://koderkow.github.io/aocr/reference/pathr-package.html</loc>
+  </url>
+  <url>
+    <loc>https://koderkow.github.io/aocr/reference/pathr_to_df.html</loc>
+  </url>
+  <url>
+    <loc>https://koderkow.github.io/aocr/reference/remove_pathr.html</loc>
+  </url>
+  <url>
+    <loc>https://koderkow.github.io/aocr/reference/url_regex.html</loc>
   </url>
 </urlset>
