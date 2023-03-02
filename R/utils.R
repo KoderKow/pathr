@@ -29,11 +29,6 @@ has_name <- function(x) {
   !is.na(nms) & nms != ""
 }
 
-travis_encrypt <- function(vars) {
-  values <- Sys.getenv(vars)
-  cat(paste0("travis encrypt ", paste0(vars, "=", values, collapse = " ")))
-}
-
 is_installed <- function(pkg) {
   system.file(package = pkg) != ""
 }
@@ -99,4 +94,64 @@ find_cert_bundle <- function() {
   system.file("cacert.pem", package = "openssl")
 }
 
-isFALSE <- function(x) identical(x, FALSE)
+is_false <- function(x) identical(x, FALSE)
+
+#' Check if an argument is a URL
+#'
+#' @param x Object to check
+#'
+#' @return If the check is successful, x will be returned invisibly.
+#' @export
+#'
+#' @examples
+#' url <- "https://github.com/KoderKow/pathr"
+#'
+#' assert_url(url)
+#'
+#' # The following throws an error
+#' url <- "ww.exampl.co/this/will/fail"
+#'
+#' try(assert_url(url))
+assert_url <- function(x) {
+  nm <- deparse(substitute(x))
+  # print(nm)
+
+  if (!is.character(x)) {
+    stop(paste0("'", nm, "' is not a character."))
+  }
+
+  if (!is_url(x)) {
+    stop(paste0("'", nm, "' is not a valid URL."))
+  }
+
+  return(invisible(x))
+}
+
+#' Is object a URL?
+#'
+#' @param x Object to be tested.
+#'
+#' @return Logical.
+#' - TRUE: all elements in the object are URLs.
+#' - FALSE: all elements in the object are not URLs
+#' @export
+#'
+#' @examples
+#' # The following returns TRUE
+#' url <- "https://github.com/KoderKow/pathr"
+#'
+#' is_url(url)
+#'
+#' # The following returns FALSE
+#' url <- "ww.exampl.co/this/will/fail"
+#'
+#' try(assert_url(url))
+is_url <- function(x) {
+  all(grepl(url_regex, x, perl = TRUE))
+}
+
+is_single_pathr <- function(x) {
+  res <- length(x) == 15 & is_pathr(x)
+
+  return(res)
+}

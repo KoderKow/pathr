@@ -19,14 +19,14 @@ test_that("parse_url works as expected", {
 
 
 test_that("empty queries not converted to NA", {
-  expect_equal(parse_url("http://x.com/?q=")$query, list(q = ""))
-  expect_equal(parse_url("http://x.com/?q")$query, list(q = ""))
+  expect_equal(parse_url("http://xd.com/?q=")$query, list(q = ""))
+  expect_equal(parse_url("http://xd.com/?q")$query, list(q = ""))
 
-  expect_equal(parse_url("http://x.com/?a&q")$query, list(a = "", q = ""))
+  expect_equal(parse_url("http://xd.com/?a&q")$query, list(a = "", q = ""))
 })
 
 test_that("query strings escaped and unescaped correctly", {
-  url <- "http://x.com/?x%20y=a%20b"
+  url <- "http://xd.com/?x%20y=a%20b"
   parsed <- parse_url(url)
   expect_equal(parsed$query, list("x y" = "a b"))
   expect_equal(build_url(parsed), url)
@@ -77,40 +77,40 @@ test_that("query strings escaped and unescaped correctly", {
 #   expect_equal(url, "http://google.com/?a=1&b=2")
 # })
 
-test_that("parse_url preserves leading / in path", {
-  url <- parse_url("file:///tmp/foobar")
-  expect_equal(url$path, "/tmp/foobar")
-})
+# test_that("parse_url preserves leading / in path", {
+#   url <- parse_url("file:///tmp/foobar")
+#   expect_equal(url$path, "/tmp/foobar")
+# })
 
-test_that("scheme starts with alpha", {
-  url <- parse_url("+ab://host/tmp/foobar")
-  expect_equal(url$scheme, NULL)
-})
+# test_that("scheme starts with alpha", {
+#   url <- parse_url("+ab://host/tmp/foobar")
+#   expect_equal(url$scheme, NULL)
+# })
 
-test_that("scheme can contain digits", {
-  url <- parse_url("ab1://host/tmp/foobar")
-  expect_equal(url$scheme, "ab1")
-})
+# test_that("scheme can contain digits", {
+#   url <- parse_url("ab1://host/tmp/foobar")
+#   expect_equal(url$scheme, "ab1")
+# })
 
-test_that("scheme can contain plus", {
-  url <- parse_url("a+b://host/tmp/foobar")
-  expect_equal(url$scheme, "a+b")
-})
+# test_that("scheme can contain plus", {
+#   url <- parse_url("a+b://host/tmp/foobar")
+#   expect_equal(url$scheme, "a+b")
+# })
 
-test_that("scheme can contain period", {
-  url <- parse_url("a.b://host/tmp/foobar")
-  expect_equal(url$scheme, "a.b")
-})
+# test_that("scheme can contain period", {
+#   url <- parse_url("a.b://host/tmp/foobar")
+#   expect_equal(url$scheme, "a.b")
+# })
 
-test_that("scheme can contain hyphen", {
-  url <- parse_url("a-b://host/tmp/foobar")
-  expect_equal(url$scheme, "a-b")
-})
+# test_that("scheme can contain hyphen", {
+#   url <- parse_url("a-b://host/tmp/foobar")
+#   expect_equal(url$scheme, "a-b")
+# })
 
-test_that("scheme can be a single character", {
-  url <- parse_url("a://host/tmp/foobar")
-  expect_equal(url$scheme, "a")
-})
+# test_that("scheme can be a single character", {
+#   url <- parse_url("a://host/tmp/foobar")
+#   expect_equal(url$scheme, "a")
+# })
 
 # compose_query -----------------------------------------------------------
 

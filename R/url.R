@@ -29,6 +29,8 @@
 #' url$query <- list(q = "hello")
 #' build_url(url)
 parse_url <- function(url) {
+  assert_url(url)
+
   if (is_pathr(url)) {
     return(url)
   }
@@ -36,17 +38,28 @@ parse_url <- function(url) {
   # url <- url_original
   # url_original <- url
 
-  url <- as.character(url)
+  res <- lapply(url, parser)
 
-  stopifnot(length(url) == 1)
+  if (length(res) == 1) {
+    res <- res[[1]]
+  }
 
+  return(res)
+}
+
+# .url <- url
+#
+# .url
+
+parser <- function(.url) {
+  original_url <- .url
   pull_off <- function(pattern) {
-    if (!str_detect(url, pattern)) {
+    if (!str_detect(.url, pattern)) {
       return(NULL)
     }
 
-    piece <- str_match(url, pattern)[, 2]
-    url <<- str_replace(url, pattern, "")
+    piece <- str_match(.url, pattern)[, 2]
+    .url <<- str_replace(.url, pattern, "")
 
     return(piece)
   }
@@ -56,10 +69,10 @@ parse_url <- function(url) {
   netloc <- pull_off("^//([^/?]*)/?")
 
   if (identical(netloc, "")) {
-    url <- paste0("/", url)
+    .url <- paste0("/", .url)
     port <- username <- password <- hostname <- NULL
   } else if (!is.null(netloc)) {
-    pieces <- strsplit(netloc, "@")[[1]]
+    pieces <- str_split(netloc, "@")[[1]]
 
     if (length(pieces) == 1) {
       username <- NULL
@@ -85,8 +98,18 @@ parse_url <- function(url) {
     port <- if (length(host_pieces) > 1) {
       host_pieces[2]
     }
+
+    hostname_pieces <- str_split(hostname, "\\.")[[1]]
+
+    if (length(hostname_pieces) == 2) {
+      host_info_name <- hostname_pieces[1]
+      host_info_extension <- hostname_pieces[2]
+    } else {
+      host_info_name <- NULL
+      host_info_extension <- NULL
+    }
   } else {
-    port <- username <- password <- hostname <- NULL
+    port <- username <- password <- hostname <- host_info_name <- host_info_extension <- NULL
   }
 
   query <- pull_off("\\?(.*)$")
@@ -98,32 +121,33 @@ parse_url <- function(url) {
   params <- pull_off(";(.*)$")
 
   # Is path a file?
-  if (grepl("\\.\\w+$", url)) {
-    dir <- sub("/[^/]*$", "", url)
-    item <- sub(".*/([^/]*?)\\..*", "\\1", url)
-    ext <- sub("^.*\\.", "", url)
+  if (grepl("\\.(?!html\\b)\\S+$", .url, perl = TRUE)) {
+    file_dir <- sub("/[^/]*$", "", .url)
+    file_name <- sub(".*/([^/]*?)\\..*", "\\1", .url)
+    file_ext <- sub("^.*\\.", "", .url)
   } else {
-    dir <- item <- ext <- NULL
+    file_dir <- file_name <- file_ext <- NULL
   }
 
   ret <- structure(
     list(
+      url = original_url,
       scheme = scheme,
       hostname = hostname,
+      host_info_name = host_info_name,
+      host_info_extension = host_info_extension,
       port = port,
-      path = url,
-      file = list(
-        dir = dir,
-        file = item,
-        ext = ext
-      ),
+      path = .url,
+      file_dir = file_dir,
+      file_name = file_name,
+      file_ext = file_ext,
       query = query,
       params = params,
       fragment = fragment,
       username = username,
       password = password
     ),
-    class = c("pathr", "character")
+    class = c("list", "pathr")
   )
 
   return(ret)
@@ -166,7 +190,7 @@ build_url <- function(url) {
     stop("Cannot set password without username")
   }
 
-  paste0(
+  ret <- paste0(
     scheme,
     "://",
     url$username,
@@ -188,4 +212,6 @@ build_url <- function(url) {
     },
     url$fragment
   )
+
+  return(ret)
 }

@@ -1,8 +1,6 @@
 #' @export
 print.pathr <- function(x, ..., sep = "") {
   if (length(x) > 0) {
-    cat("Url: ", build_url(x), "\n", ..., sep = sep)
-
     elements <- unlist(x)
     clean_names <- str_replace(names(elements), "\\.", "_")
     names(elements) <- clean_names

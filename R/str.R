@@ -1,4 +1,5 @@
-# These are drop in replacements for the stringr:: functions used in httr. They
+# 2023-03-01 Copied from https://github.com/r-lib/httr/
+# These are drop in replacements for the stringr:: functions used in pathr They
 # do not retain all functionality from stringr, only that which is used in
 # httr. Notably they are generally not vectorized.
 str_trim <- function(x) {
