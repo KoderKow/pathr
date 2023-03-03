@@ -22,9 +22,10 @@ pathr_to_df <- function(x) {
   is_pathr(x)
 
   if (is_single_pathr(x)) {
-    d <- as.data.frame(do.call(rbind, list(x)))
+    d <- as.data.frame(lapply(x, null_to_na))
   } else {
-    d <- as.data.frame(do.call(rbind, x))
+    l_x <- lapply(x, \(.x) lapply(.x, null_to_na))
+    d <- as.data.frame(do.call(rbind, lapply(l_x, unlist)))
   }
 
   d[d == "NULL"] <- NA

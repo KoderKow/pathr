@@ -155,3 +155,7 @@ is_single_pathr <- function(x) {
 
   return(res)
 }
+
+null_to_na <- function(x) {
+  ifelse(class(x) == "NULL", NA_character_, x)
+}
